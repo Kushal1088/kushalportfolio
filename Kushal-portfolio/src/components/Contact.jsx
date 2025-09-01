@@ -1,5 +1,3 @@
-
-
 import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { motion } from 'framer-motion';
@@ -11,7 +9,7 @@ const Contact = () => {
   const sendEmail = (e) => {
     e.preventDefault();
 
-   emailjs.sendForm(
+    emailjs.sendForm(
       import.meta.env.VITE_EMAILJS_SERVICE_ID,
       import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
       form.current,
@@ -20,10 +18,8 @@ const Contact = () => {
     .then((result) => {
       console.log(result.text);
       setDone(true);
-     
-      form.current.reset();
+      form.current.reset(); // 👈 yeh bhi add kiya taki form clear ho jaye
     }, (error) => {
-     
       console.log(error.text);
     });
   };
@@ -38,7 +34,7 @@ const Contact = () => {
       >
         Contact Me
       </motion.h2>
-        <div className="w-20 h-[2px] bg-cyan-400 mx-auto mb-12"></div>
+      <div className="w-20 h-[2px] bg-cyan-400 mx-auto mb-12"></div>
 
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
@@ -51,7 +47,7 @@ const Contact = () => {
             <label htmlFor="name" className="text-sm font-semibold mb-1">Name</label>
             <input
               type="text"
-              name="name"
+              name="user_name"
               required
               className="px-4 py-2 rounded  bg-opacity-10 border border-white border-opacity-10 focus:outline-none focus:ring-2 focus:ring-cyan-400 text-white placeholder:text-white placeholder-opacity-70"
               placeholder="Your Name"
@@ -62,7 +58,7 @@ const Contact = () => {
             <label htmlFor="email" className="text-sm font-semibold mb-1">Email</label>
             <input
               type="email"
-              name="email"
+              name="user_email"
               required
               className="px-4 py-2 rounded  bg-opacity-10 border border-white border-opacity-10 focus:outline-none focus:ring-2 focus:ring-cyan-400 text-white placeholder:text-white placeholder-opacity-70"
               placeholder="Your Email"
@@ -73,7 +69,7 @@ const Contact = () => {
             <label htmlFor="title" className="text-sm font-semibold mb-1">Subject</label>
             <input
               type="text"
-              name="title"
+              name="subject"
               required
               className="px-4 py-2 rounded  bg-opacity-10 border border-white border-opacity-10 focus:outline-none focus:ring-2 focus:ring-cyan-400 text-white placeholder:text-white placeholder-opacity-70"
               placeholder="Subject"
